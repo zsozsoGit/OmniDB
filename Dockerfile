@@ -27,7 +27,7 @@ RUN apk del .build-deps \
 
 EXPOSE 8080 25482
 
-COPY /etc/omnidb /opt/Omn
+RUN cp /etc/omnidb /opt/Omn
 
 WORKDIR /opt/OmniDB-${OMNIDB_VERSION}/OmniDB
 
