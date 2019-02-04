@@ -15,7 +15,7 @@ RUN apk add --no-cache --virtual .build-deps curl unzip g++ python3-dev \
 RUN unzip /tmp/OmniDB.zip -d /opt/
 RUN rm -f /tmp/OmniDB.zip \
       && mkdir /etc/omnidb
-RUN cd /opt/OmniDB-${OMNIDB_VERSION} \
+RUN cd /opt/OmniDB \
       && pip3 install --upgrade pip==9.0.3 \
       && echo "Begin install cherrypy" \
       && pip3 install cherrypy \
