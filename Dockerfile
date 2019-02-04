@@ -27,9 +27,10 @@ RUN apk del .build-deps \
 
 EXPOSE 8080 25482
 
-RUN cp /etc/omnidb /opt/Omn
+RUN mkdir /opt/etc \
+      && cp -r /etc/omnidb /opt/etc
 
 WORKDIR /opt/OmniDB-${OMNIDB_VERSION}/OmniDB
 
-ENTRYPOINT ["python3", "omnidb-server.py", "--host=0.0.0.0", "--port=8080", "-d", "/etc/Omn"]
+ENTRYPOINT ["python3", "omnidb-server.py", "--host=0.0.0.0", "--port=8080", "-d", "/opt/etc/omnidb"]
 
