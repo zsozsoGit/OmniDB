@@ -27,7 +27,6 @@ RUN apk del .build-deps \
 
 EXPOSE 8080 25482
 
-WORKDIR /opt/OmniDB-${OMNIDB_VERSION}/OmniDB
+WORKDIR /opt/OmniDB
 
-ENTRYPOINT ["python3", "omnidb-server.py", "--host=0.0.0.0", "--port=8080", "-d", "/opt/OmniDB-${OMNIDB_VERSION}/OmniDB
-/omnidb"]
+ENTRYPOINT ["python3", "omnidb-server.py", "--host=0.0.0.0", "--port=8080", "-d", "/opt/OmniDB"]
