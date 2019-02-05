@@ -1,7 +1,5 @@
 FROM alpine:3.8
 
-MAINTAINER Taivo Käsper <taivo.kasper@gmail.com>
-
 ENV OMNIDB_VERSION 2.12.0
 
 RUN apk add --no-cache --virtual .build-deps curl unzip g++ python3-dev \
@@ -27,10 +25,10 @@ RUN apk del .build-deps \
 
 EXPOSE 8080 25482
 
-RUN mkdir /opt/etc \
-      && cp -r /etc/omnidb /opt/etc
+COPY --from=/etc/omnidb --chown=node /opt/etc/
 
 WORKDIR /opt/OmniDB-${OMNIDB_VERSION}/OmniDB
+USER node
 
 ENTRYPOINT ["python3", "omnidb-server.py", "--host=0.0.0.0", "--port=8080", "-d", "/opt/etc/omnidb"]
 
